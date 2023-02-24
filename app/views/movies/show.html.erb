@@ -4,6 +4,15 @@
       Movie #<%= @the_movie.id %> details
     </h1>
 
+    <hr>
+      <form action = "/bookmark_movie" method = "post">
+        <input type = "text" name = "query_movie_id" value = "<%= @the_movie.id %>">
+        <input type = "text" name = "query_user_id" value = "<%= session[:user_id]%>">
+
+        <button>Bookmark!</button>
+      <form>
+    <hr>
+
     <div>
       <div>
         <a href="/movies">
