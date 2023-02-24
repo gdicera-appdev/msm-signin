@@ -1,11 +1,12 @@
 class BookmarksController < ApplicationController
+  
   def create_from_movie
     b = Bookmark.new
     b.movie_id = params.fetch("movie_id")
     b.user_id = params.fetch("user_id")
     b.save
 
-    redirect_to("/movies/#{b.movie_id}", { :notice => "Bookmarked!"})
+    redirect_to("/bookmarks/", { :notice => "Bookmarked!"})
 
   end
   

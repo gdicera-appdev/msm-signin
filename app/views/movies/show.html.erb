@@ -5,12 +5,23 @@
     </h1>
 
     <hr>
-      <form action = "/bookmark_movie" method = "post">
-        <input type = "text" name = "query_movie_id" value = "<%= @the_movie.id %>">
-        <input type = "text" name = "query_user_id" value = "<%= session[:user_id]%>">
+      <% bookmark = Bookmark.where(
+        { 
+          :user_id => session.fetch(:user_id), 
+          :movie_id => @the_movie.id 
+        }
+        ).at(0) %>
 
-        <button>Bookmark!</button>
-      <form>
+      <% if bookmark != nil %>
+        <a href = "/delete_bookmark/<%= bookmark.id %>">Un-bookmark</a>
+      <% else %>
+        <form action = "/bookmark_movie" method = "post">
+          <input type = "text" name = "query_movie_id" value = "<%= @the_movie.id %>">
+          <input type = "text" name = "query_user_id" value = "<%= session[:user_id]%>">
+
+          <button>Bookmark!</button>
+        <form>
+      <% end %>
     <hr>
 
     <div>
