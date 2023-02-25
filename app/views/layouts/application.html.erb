@@ -20,8 +20,9 @@
       <li><a href="/characters">Characters</a></li>
       <li><a href="/actors">Actors</a></li>
       <li><a href="/directors">Directors</a></li>
+      <li><a href="/bookmarks">Bookmarks</a></li>
 
-      <% if session[:user_id] == nil %>
+      <% if session.fetch(:user_id) == nil %>
       <li><a href="/user_sign_in">Sign in</a></li>
       <li><a href="/user_sign_up">Sign up</a></li>
 

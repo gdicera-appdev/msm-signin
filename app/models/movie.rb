@@ -17,4 +17,6 @@ class Movie < ApplicationRecord
   has_many(:characters, { :class_name => "Character", :foreign_key => "movie_id", :dependent => :destroy })
   has_many(:cast, { :through => :characters, :source => :actor })
 
+  validates(:title, { :presence => true})
+
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Homepage
-  get("/", { :controller => "homepage", :action => "index" })
+  get("/", { :controller => "movies", :action => "index" })
 
   # Routes for the Bookmark resource:
 
