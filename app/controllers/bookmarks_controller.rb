@@ -1,14 +1,5 @@
 class BookmarksController < ApplicationController
   
-  def create_from_movie
-    b = Bookmark.new
-    b.movie_id = params.fetch("movie_id")
-    b.user_id = params.fetch("user_id")
-    b.save
-
-    redirect_to("/bookmarks/", { :notice => "Bookmarked!"})
-
-  end
   
   def index
     matching_bookmarks = Bookmark.all
@@ -30,7 +21,7 @@ class BookmarksController < ApplicationController
 
   def create
     the_bookmark = Bookmark.new
-    the_bookmark.user_id = params.fetch("query_user_id")
+    the_bookmark.user_id = session.fetch(:user_id)
     the_bookmark.movie_id = params.fetch("query_movie_id")
 
     if the_bookmark.valid?
