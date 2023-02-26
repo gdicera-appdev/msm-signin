@@ -4,11 +4,10 @@
       Movie #<%= @the_movie.id %> details
     </h1>
 
-
+    <% if @current_user != nil %>
     <hr>
-      <% current_user_bookmarks = Bookmark.where(
+      <% current_user_bookmarks = @current_user.bookmarks.where(
         { 
-          :user_id => session.fetch(:user_id), 
           :movie_id => @the_movie.id 
         }
         ) %>
@@ -24,6 +23,7 @@
       <% else %>
          <a href = "/delete_bookmark/<%= the_bookmark.id %>">Un-bookmark</a>
       <% end %>
+    <% end %>
     <hr>
 
     <div>
